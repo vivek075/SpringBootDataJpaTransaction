@@ -8,6 +8,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Profile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,7 @@ public class TransactionApplication {
     }
 
     @Bean
+    @Profile("!test")
     public CommandLineRunner initDatabase(CustomerRepository customerRepository, ProductRepository productRepository) {
         return args -> {
             // Create an initial customer with a default balance
